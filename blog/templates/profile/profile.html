@@ -39,7 +39,11 @@
           </div>
         </div>
       </div>
-      <h5 class="mb-4">Blogs written by {{ user.username }}</h5>
+      <div class="d-flex justify-content-between mb-4">
+        <h5 class="mb-0">Blogs written by {{ user.username }}</h5>
+        <a href="/blog/add" class="btn btn-sm btn-primary">Add Blog</a>
+      </div>
+      
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for blog in blogs %}
         <div class="col">
@@ -55,7 +59,6 @@
             />
             <div class="card-body">
               <h6>{{ blog.title }}</h6>
-              <p class="card-text">{{ blog.description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a
