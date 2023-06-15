@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+      integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    {% include './common/header.html' %}
+
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <h4 class="mb-4">Blogs</h4>
+          <a href="/blog/add" class="btn btn-primary mb-4">Add</a>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for blog in blogs %}
+          <div class="col">
+            <div class="card shadow-sm">
+              {% load static %}
+              <img
+                src="{% static blog.featured_image %}"
+                alt="{{ blog.title }}"
+                class="bd-placeholder-img card-img-top"
+                style="object-fit: cover"
+                width="100%"
+                height="225"
+              />
+              <div class="card-body">
+                <h6>{{ blog.title }}</h6>
+                <p class="card-text">{{ blog.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a
+                      href="/blog/{{blog.id}}"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      View
+                    </a>
+                    <a
+                      href="/blog/edit/{{blog.id}}"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Edit
+                    </a>
+                  </div>
+                  <small class="text-body-secondary"
+                    >{{ blog.created_at }}</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% include './common/footer.html' %}
+  </body>
+</html>
