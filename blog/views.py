@@ -52,7 +52,7 @@ def blogEditPage(request, pk):
     if(request.method == 'POST'):
         title = request.POST['title']
         description = request.POST['description']
-        featured_image = request.FILES['featured_image']
+        featured_image = request.FILES.get('featured_image')
         if(featured_image):
             path.isfile('static/'+ str(blog.featured_image)) and remove('static/'+ str(blog.featured_image))
             fss = FileSystemStorage(location='static/assets/images', base_url='assets/images')

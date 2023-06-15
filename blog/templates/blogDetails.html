@@ -19,7 +19,8 @@
       <article class="blog-post my-5">
         <h2 class="blog-post-title mb-1">{{ blog.title }}</h2>
         <p class="blog-post-meta">
-          {{ blog.created_at }} by <a href="#">{{ blog.user }}</a>
+          {{ blog.created_at }} by
+          <a href="/profile/{{ blog.user.id }}">{{ blog.user }}</a>
         </p>
         {% load static %}
         <img
