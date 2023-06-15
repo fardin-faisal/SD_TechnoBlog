@@ -28,6 +28,7 @@ def blogPage(request):
     blogs = Blog.objects.filter(user=request.user)
     context = {
         'blogs': blogs,
+        
     }
     return render(request, 'blog.html', context)
 
